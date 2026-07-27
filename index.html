@@ -23,7 +23,65 @@
     <title>Georgie Aesthetic Clinic Milton Keynes | Nurse-Led Clinic</title>
     <script type="module" crossorigin src="/js/index-v3.js"></script>
     <link rel="stylesheet" crossorigin href="/css/index-DfrEnKpe.css">
+  
+    
+    
+    <style>
+      /* Mobile Performance & Layout Optimizations */
+      @media (max-width: 768px) {
+        /* 1. Disable heavy backdrop blurs on mobile as they cause severe scroll lag */
+        * {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+        
+        /* 2. Disable heavy box shadows on cards and floating elements */
+        .ga-signature-scene__card, 
+        .ga-signature-scene__card *,
+        [class*="shadow"] {
+          box-shadow: none !important;
+        }
+
+        /* 3. Disable Lenis smooth scrolling for mobile devices (native is faster) */
+        html.lenis, html.lenis body {
+          height: auto !important;
+          overflow: auto !important;
+        }
+
+        /* 4. Hardware acceleration for videos to prevent paint lag */
+        video {
+          transform: translateZ(0);
+          will-change: transform, opacity;
+        }
+
+        /* 5. Force text rendering speed over legibility on mobile */
+        body {
+          text-rendering: optimizeSpeed;
+          -webkit-font-smoothing: antialiased;
+        }
+        
+        /* 6. Fix specific layout issues that squish on mobile */
+        .h-screen {
+          height: auto !important;
+          min-height: 100vh !important; /* allow content to grow */
+        }
+        
+        /* Stop 50% width columns from squishing next to each other on mobile */
+        .md\:w-1\/2 {
+          width: 100% !important;
+        }
+        
+        /* Reset padding for mobile */
+        .p-12, .px-12 {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
+      }
+    </style>
   </head>
+
+
+
   <body>
     <div id="root"></div>
   
