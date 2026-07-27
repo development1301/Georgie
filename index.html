@@ -28,8 +28,9 @@
     
     
     
+    
     <style>
-      /* Mobile Performance & Layout Optimizations - V4 (Scroll Stuck Fix) */
+      /* Mobile Performance & Layout Optimizations - V5 (Ultimate Scroll Fix) */
       @media (max-width: 768px) {
         /* 1. Disable heavy backdrop blurs on mobile as they cause severe scroll lag */
         * {
@@ -50,12 +51,46 @@
           will-change: transform, opacity;
         }
         
-        /* 4. Fix specific layout issues that squish on mobile without breaking GSAP */
-        /* Revert the height: auto which broke GSAP pin calculations */
-        .h-screen {
-          height: 100dvh !important; 
+        /* 4. Disable GSAP Pinning completely on mobile */
+        /* This prevents the page from EVER getting stuck when scrolling up and down */
+        .pin-spacer {
+          position: relative !important;
+          padding: 0 !important;
+          height: auto !important;
+          min-height: auto !important;
+          display: block !important;
         }
         
+        .pin-spacer > * {
+          position: relative !important;
+          transform: none !important;
+          left: auto !important;
+          top: auto !important;
+          width: 100% !important;
+          height: auto !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        /* Disable GSAP transforms on heavy animated sections to ensure snappy scroll */
+        .ga-signature-scene, .ga-signature-transition {
+          transform: none !important;
+        }
+
+        /* 5. Force native scroll and kill Lenis interference on mobile */
+        html.lenis, html.lenis body {
+          height: auto !important;
+          overflow: auto !important;
+          scroll-behavior: auto !important;
+          overscroll-behavior-y: auto !important;
+        }
+        
+        body {
+          text-rendering: optimizeSpeed;
+          -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Fix squishing */
         .md\:w-1\/2 {
           width: 100% !important;
         }
@@ -64,27 +99,10 @@
           padding-left: 1rem !important;
           padding-right: 1rem !important;
         }
-
-        /* 5. Prevent Lenis/GSAP jitter on touch screens */
-        html.lenis, html.lenis body {
-          overscroll-behavior-y: none;
-        }
-      }
-      
-      /* Global scroll fixes for GSAP */
-      .pin-spacer {
-        /* Prevent layout thrashing when GSAP pins/unpins */
-        padding: 0 !important;
-      }
-      
-      /* If Lenis is intercepting too much on mobile, we can optionally enforce native touch behavior */
-      @media (max-width: 768px) {
-        .lenis {
-          touch-action: pan-y !important;
-        }
       }
     </style>
   </head>
+
 
 
 
