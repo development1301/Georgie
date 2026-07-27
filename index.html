@@ -27,8 +27,9 @@
     
     
     
+    
     <style>
-      /* Mobile Performance & Layout Optimizations - V3 */
+      /* Mobile Performance & Layout Optimizations - V4 (Scroll Stuck Fix) */
       @media (max-width: 768px) {
         /* 1. Disable heavy backdrop blurs on mobile as they cause severe scroll lag */
         * {
@@ -48,17 +49,11 @@
           transform: translateZ(0);
           will-change: transform, opacity;
         }
-
-        /* 4. Force text rendering speed over legibility on mobile */
-        body {
-          text-rendering: optimizeSpeed;
-          -webkit-font-smoothing: antialiased;
-        }
         
-        /* 5. Fix specific layout issues that squish on mobile */
+        /* 4. Fix specific layout issues that squish on mobile without breaking GSAP */
+        /* Revert the height: auto which broke GSAP pin calculations */
         .h-screen {
-          height: auto !important;
-          min-height: 100vh !important;
+          height: 100dvh !important; 
         }
         
         .md\:w-1\/2 {
@@ -69,20 +64,28 @@
           padding-left: 1rem !important;
           padding-right: 1rem !important;
         }
+
+        /* 5. Prevent Lenis/GSAP jitter on touch screens */
+        html.lenis, html.lenis body {
+          overscroll-behavior-y: none;
+        }
       }
       
-      /* 6. Global fix for GSAP/Lenis getting stuck on scroll direction changes */
-      html, body {
-        /* Prevent bounce effect which can desync ScrollTrigger */
-        overscroll-behavior-y: none;
-      }
-      
-      /* Ensure pinned elements don't collapse */
+      /* Global scroll fixes for GSAP */
       .pin-spacer {
-        max-width: 100vw !important;
+        /* Prevent layout thrashing when GSAP pins/unpins */
+        padding: 0 !important;
+      }
+      
+      /* If Lenis is intercepting too much on mobile, we can optionally enforce native touch behavior */
+      @media (max-width: 768px) {
+        .lenis {
+          touch-action: pan-y !important;
+        }
       }
     </style>
   </head>
+
 
 
 
