@@ -1,0 +1,1 @@
+"p",{className:"truncate text-[9px] font-bold uppercase tracking-[0.22em] text-[#79aaa8]",children:"Georgie's"}),c.jsx("p",{className:"truncate text-xs font-semibold tracking-[-0.02em] text-white/76",children:

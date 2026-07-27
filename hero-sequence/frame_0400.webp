@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="recursive-project" content="georgies-aesthetics-expanded-roundrobin" />
+    <meta
+      name="description"
+      content="Nurse-led aesthetics clinic in central Milton Keynes for natural anti-wrinkle, filler, skin booster, microneedling and wellness treatments."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#101716" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:site_name" content="Georgie's Aesthetics" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Georgie's Aesthetics Milton Keynes" />
+    <meta
+      property="og:description"
+      content="Nurse-led aesthetics clinic in central Milton Keynes focused on natural, confidence-boosting results."
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Georgie's Aesthetics Milton Keynes | Nurse-Led Clinic</title>
+    <script type="module" crossorigin src="/assets/index-CqNrc0OC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DfrEnKpe.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
