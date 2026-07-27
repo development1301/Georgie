@@ -29,30 +29,37 @@
     
     
     
+    
     <style>
-      /* Mobile Performance & Layout Optimizations - V5 (Ultimate Scroll Fix) */
+      /* Mobile Performance & Layout Optimizations - V6 (Perfect Mobile Sync) */
       @media (max-width: 768px) {
-        /* 1. Disable heavy backdrop blurs on mobile as they cause severe scroll lag */
+        /* 1. Prevent Horizontal Scroll Lag */
+        html, body {
+          overflow-x: hidden !important;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 2. Disable heavy backdrop blurs on mobile */
         * {
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
         }
         
-        /* 2. Disable heavy box shadows on cards and floating elements */
+        /* 3. Disable heavy box shadows */
         .ga-signature-scene__card, 
         .ga-signature-scene__card *,
         [class*="shadow"] {
           box-shadow: none !important;
         }
 
-        /* 3. Hardware acceleration for videos to prevent paint lag */
+        /* 4. Hardware acceleration for videos */
         video {
           transform: translateZ(0);
           will-change: transform, opacity;
         }
         
-        /* 4. Disable GSAP Pinning completely on mobile */
-        /* This prevents the page from EVER getting stuck when scrolling up and down */
+        /* 5. Ultimate Scroll-Stuck Fix: Completely strip GSAP pinning on mobile */
+        /* GSAP pinning calculates pixels dynamically which breaks on mobile native scroll */
         .pin-spacer {
           position: relative !important;
           padding: 0 !important;
@@ -72,25 +79,25 @@
           box-sizing: border-box !important;
         }
         
-        /* Disable GSAP transforms on heavy animated sections to ensure snappy scroll */
+        /* Remove GSAP transforms on heavy animated sections */
         .ga-signature-scene, .ga-signature-transition {
           transform: none !important;
         }
 
-        /* 5. Force native scroll and kill Lenis interference on mobile */
+        /* 6. Force native scroll and eliminate Lenis Javascript interference */
         html.lenis, html.lenis body {
           height: auto !important;
-          overflow: auto !important;
+          overflow-y: auto !important;
           scroll-behavior: auto !important;
           overscroll-behavior-y: auto !important;
         }
         
+        /* 7. Text Rendering & Squish Fixes */
         body {
           text-rendering: optimizeSpeed;
           -webkit-font-smoothing: antialiased;
         }
         
-        /* Fix squishing */
         .md\:w-1\/2 {
           width: 100% !important;
         }
@@ -102,6 +109,7 @@
       }
     </style>
   </head>
+
 
 
 
